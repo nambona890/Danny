@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="Danny.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sounds\after8.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\badnewsbrown.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\colgate.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\dairyqueen.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\damnit.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\datastartrek.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\dick.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\dustyrhodes.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\fuck1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\hacksaw.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\koolaid.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\machoman.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\mcdonalds.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\mrperfect.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\ohshit.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\piss1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\piss2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\randytravis.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\rickmoranis.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\shiiit.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\wendys.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\wtf.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Danny.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{c589f88e-12b2-4f26-80d5-8424a3cb9f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{611d0a76-5f92-40e4-b27d-5b510d8ba2af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{23a2242c-0732-490e-bc7b-fc9c2975c305}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Danny.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Danny.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
