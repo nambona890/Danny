@@ -376,7 +376,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
     MessageBox(NULL, L"Too late, you're already fucked!", L"Uh oh", MB_OK);
     tray.run();
     closewin = true;
-    tray.exit();
+    Sleep(1000);
     return 0;
 }
 
