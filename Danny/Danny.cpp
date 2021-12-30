@@ -12,12 +12,19 @@
 #include <shellapi.h>
 #include <ctime>
 
+#include <atomic>
+
+#include <tray.hpp>
+
+
 #define MAX_LOADSTRING 100
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
+HMENU hmenu = NULL;
+std::atomic_bool closewin = false;
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -223,7 +230,7 @@ void TourettesWindows()
         {IDR_MCDONALDS,{L"mcdonalds",L"mcdonald's",L"ronald mcdonald"}},
         {IDR_WENDYS,{L"wendys",L"wendy's"}},
     };
-    while (1)
+    while (!closewin)
     {
         std::vector<WindowTitle> titles;
         EnumWindows(EnumWindowsProc, reinterpret_cast<LPARAM>(&titles));
@@ -266,18 +273,19 @@ void TourettesRandom()
     std::vector<int> randomcurses = {
         IDR_DICK,IDR_FUCK1,IDR_OHSHIT,IDR_PISS1,IDR_PISS2
     };
-    while (1)
+    Sleep(1000 * (10 + (rand() % 50)));
+    while (!closewin)
     {
-        Sleep(1000*(10+(rand()%50)));
         const int dick = randomcurses[rand() % randomcurses.size()];
         PlaySound(MAKEINTRESOURCE(dick), hInst, SND_RESOURCE | SND_ASYNC);
+        Sleep(1000 * (10 + (rand() % 50)));
     }
 }
 
 void AfterEight()
 {
     bool playing = false;
-    while (1)
+    while (!closewin)
     {
         auto now = std::chrono::system_clock::now();
 
@@ -312,7 +320,7 @@ void TourettesCMD()
     DWORD delay[11] = {
         kd,kd,kd,kd,kd,kd,kd,kd,kd,kd,1000
     };
-    while (1)
+    while (!closewin)
     {
         bool found = false;
         std::vector<WindowTitle> titles;
@@ -358,12 +366,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
     LPWSTR cline = GetCommandLineW();
     int argc;
     LPWSTR* argv = CommandLineToArgvW(cline, &argc);
+
+    HICON icon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DANNY));
+
+    Tray::Tray tray("Danny.exe", icon);
+    tray.addEntry(Tray::Button("Exit", [&] {tray.exit(); }));
+
     PlaySound(MAKEINTRESOURCE(IDR_SHIT), hInst, SND_RESOURCE | SND_ASYNC);
     MessageBox(NULL, L"Too late, you're already fucked!", L"Uh oh", MB_OK);
-    while (1)
-    {
-        Sleep(100);
-    }
+    tray.run();
+    closewin = true;
+    tray.exit();
     return 0;
 }
 
