@@ -165,6 +165,7 @@
   <ItemGroup>
     <Media Include="sounds\after8.wav" />
     <Media Include="sounds\badnewsbrown.wav" />
+    <Media Include="sounds\beep.wav" />
     <Media Include="sounds\colgate.wav" />
     <Media Include="sounds\dairyqueen.wav" />
     <Media Include="sounds\damnit.wav" />
@@ -188,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="wave1.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

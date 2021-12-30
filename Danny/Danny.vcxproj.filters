@@ -81,6 +81,9 @@
     <Media Include="sounds\wtf.wav">
       <Filter>Resource Files</Filter>
     </Media>
+    <Media Include="sounds\beep.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Danny.ico">
@@ -113,5 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="wave1.bin" />
   </ItemGroup>
 </Project>

