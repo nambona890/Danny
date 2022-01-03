@@ -145,13 +145,13 @@ void AfterEight()
 void TourettesCMD()
 {
     constexpr DWORD kd = 100;
-    constexpr size_t msglength = 12;
+    constexpr size_t msglength = 11;
     size_t keyIndex = 0;
     WORD keys[msglength] = {
-        'L','O','L',VK_SPACE,'D','U','M','B','A','S','S',VK_RETURN
+        'L','O','L',VK_SPACE,'R','E','T','A','R','D',VK_RETURN
     };
     DWORD delay[msglength] = {
-        kd,kd,kd,kd,kd,kd,kd,kd,kd,kd,kd,1000
+        kd,kd,kd,kd,kd,kd,kd,kd,kd,kd,1000
     };
     while (!closewin)
     {
