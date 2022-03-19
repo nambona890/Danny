@@ -22,7 +22,7 @@
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
-std::atomic_bool closewin = false;
+std::atomic_bool closewin,closet1,closet2,closet3,closet4 = false;
 
 // Forward declarations of functions included in this code module:
 
@@ -99,6 +99,7 @@ void TourettesWindows()
         }
         Sleep(100);
     }
+    closet1 = true;
 }
 
 void TourettesRandom()
@@ -106,13 +107,37 @@ void TourettesRandom()
     std::vector<int> randomcurses = {
         IDR_DICK,IDR_FUCK1,IDR_OHSHIT,IDR_PISS1,IDR_PISS2
     };
-    Sleep(1000 * (10 + (rand() % 50)));
+    int delay = 100 + (rand() % 50);
+    for (int i = 0; i < delay; i++)
+    {
+        if (!closewin)
+        {
+            Sleep(100);
+        }
+        else
+        {
+            goto fuckyou;
+        }
+    }
     while (!closewin)
     {
+        delay = 100 + (rand() % 50);
         const int dick = randomcurses[rand() % randomcurses.size()];
         PlaySound(MAKEINTRESOURCE(dick), hInst, SND_RESOURCE | SND_ASYNC);
-        Sleep(1000 * (10 + (rand() % 50)));
+        for (int i = 0; i < delay; i++)
+        {
+            if (!closewin)
+            {
+                Sleep(100);
+            }
+            else
+            {
+                goto fuckyou;
+            }
+        }
     }
+fuckyou:
+    closet2 = true;
 }
 
 void AfterEight()
@@ -140,6 +165,7 @@ void AfterEight()
         }
         Sleep(100);
     }
+    closet3 = true;
 }
 
 void TourettesCMD()
@@ -195,6 +221,7 @@ void TourettesCMD()
             keyIndex %= msglength;
         }
     }
+    closet4 = true;
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, int iCmdShow)
@@ -215,8 +242,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
     PlaySound(MAKEINTRESOURCE(IDR_SHIT), hInst, SND_RESOURCE | SND_ASYNC);
     MessageBox(NULL, L"Too late, you're already fucked!", L"Uh oh", MB_OK);
     tray.run();
+    closewin = true;
+    while (!closet1)
+    {
+        Sleep(10);
+    }
+    t1.join();
+    while (!closet2)
+    {
+        Sleep(10);
+    }
+    t2.join();
+    while (!closet3)
+    {
+        Sleep(10);
+    }
+    t3.join();
+    while (!closet4)
+    {
+        Sleep(10);
+    }
+    t4.join();
     PostQuitMessage(0);
-    //closewin = true;
     return 0;
 }
 
